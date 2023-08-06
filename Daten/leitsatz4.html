@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeKompass</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const radioButtons = document.querySelectorAll('input[type="radio"]');
+      radioButtons.forEach((radioButton) => {
+        radioButton.addEventListener('change', handleRadioButtonChange);
+      });
+  
+      function handleRadioButtonChange(event) {
+        const radioButton = event.target;
+        const name = radioButton.name;
+        const value = radioButton.value;
+        sessionStorage.setItem(name, value);
+      }
+  
+      function loadSavedSelections() {
+        radioButtons.forEach((radioButton) => {
+          const name = radioButton.name;
+          const savedValue = sessionStorage.getItem(name);
+          if (savedValue !== null) {
+            radioButton.checked = radioButton.value === savedValue;
+          }
+        });
+      }
+  
+      loadSavedSelections();
+    });
+  </script>
+  
+    
+</head>
+<body>
+
+    <header>
+    <img src="https://www.sparkassen-akademie.de/application/files/5716/7966/9548/Akademie-HT_Marke_rgb_auf_transp.png">
+    <div>
+        <h1>Der Change Kompass</h1>
+        <h2>Fragestellungen</h2>
+    </div>
+
+    </header>
+
+    <div class="bereich">
+        <div class="bereich2">
+            <h2>
+              Leitsatz 4: Change-Kompetenz
+            </h2>
+                <h3>
+                  Es gibt ein PE-Konzept, wie die Change-Kompetenz im Gesamthaus aufgebaut und nachgehalten wird. Es ist klar, von wem in welcher Rolle in welchem Umfang Change-Kompetenz erwartet wird. Es ist transparent, wer über welches Change-Begleitungswissen verfügt. Es gibt ein Grundlagenwissen bei allen Führungskräften und Projektleitern, welches regelmäßig aufgefrischt und in Austauschrunden geteilt wird.
+                </h3>
+
+        </div>
+            <h4>Dimension Mitarbeiter:innen<br>Kompetenz</h4>
+            
+            <table class="content-table">
+                <thead>
+                  <tr>
+                    <th style="vertical-align: middle; text-align: left; font-size: 20px;">Fragestellung</th>
+                    <th>(noch)<br>nicht<br>1</th>
+                    <th>2</th>
+                    <th>3</th>
+                    <th>4</th>
+                    <th>voll und<br>ganz<br>5</th>
+                    <th style="vertical-align: middle;">keine<br>Antwort<br>möglich</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="text-align: left;">Es gibt ein Grundlagenwissen, das bei allen Führungskräften und Projektleitern (Change- und Moderationskompetenz) vorhanden ist.</td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=1 id="4.1.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=2 id="4.1.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=3 id="4.1.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=4 id="4.1.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=5 id="4.1.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.1" value=0 id="4.1.6"/><span></span>
+                        </label></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Es gibt konkrete Orientierungsmerkmale, in welcher Tiefe Change-Kompetenz erwartet wird.</td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=1 id="4.2.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=2 id="4.2.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=3 id="4.2.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=4 id="4.2.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=5 id="4.2.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.2" value=0 id="4.2.6"/><span></span>
+                        </label></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Es gibt ein PE-Konzept, wie die Change-Kompetenz im Gesamthaus aufgebaut wird und nachgehalten wird (z.B. Coaching und Austauschrunden).</td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=1 id="4.3.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=2 id="4.3.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=3 id="4.3.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=4 id="4.3.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=5 id="4.3.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.3" value=0 id="4.3.6"/><span></span>
+                        </label></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Agile Methoden (z.B. Reviews und Retrospektiven) werden regelmäßig praktisch angewendet.</td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=1 id="4.4.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=2 id="4.4.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=3 id="4.4.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=4 id="4.4.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=5 id="4.4.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="4.4" value=0 id="4.4.6"/><span></span>
+                        </label></td>
+                  </tr>
+                  <!--<tr>
+                    <td style="text-align: left;">Ein Kommunikations-Konzept in Form von regelmäßigen Dialog- und Reflexionsformaten zu Veränderungsthemen ist festgelegt.</td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=1 id="3.5.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=2 id="3.5.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=3 id="3.5.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=4 id="3.5.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=5 id="3.5.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.5" value=0 id="3.5.6"/><span></span>
+                        </label></td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: left;">Es gibt eine Vereinbarung, wie ein Change Management Controlling / Reflexion zu den getroffenen Maßnahmen erfolgt. (Messbarkeit)</td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=1 id="3.6.1"/><span></span>
+                          </label></td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=2 id="3.6.2"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=3 id="3.6.3"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=4 id="3.6.4"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=5 id="3.6.5"/><span></span>
+                        </label></td>
+                    <td><label>
+                                <input type="radio" name="3.6" value=0 id="3.6.6"/><span></span>
+                        </label></td>
+                  </tr>-->
+                </tbody>
+              </table>
+        
+        <a href="antwort3.html">
+        <button class="zurueck">
+            &lt;
+        </button></a>
+        
+        <a href="antwort4.html">
+            <button class="button button2">
+                weiter
+        </button></a>
+        
+      </div>
+        
+</body>
+</html>
