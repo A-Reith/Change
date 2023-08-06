@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeKompass</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+    <script>var meinWert</script>
+    
+</head>
+<body>
+    <header>
+    <img src="https://www.sparkassen-akademie.de/application/files/5716/7966/9548/Akademie-HT_Marke_rgb_auf_transp.png">
+    <div>
+        <h1>Der Change Kompass</h1>
+        <h2>Fragestellungen</h2>
+    </div>
+
+    </header>
+
+    <div class="bereich">
+        <script>
+      // Funktion zum Berechnen des Mittelwerts
+      function calculateAverage() {
+        // Die Keys der Radio-Buttons für die Berechnung
+        const keys = ['5.1', '5.2', '5.3', '5.4', '5.5'];
+        let sum = 0;
+
+        keys.forEach((key) => {
+          const savedValue = sessionStorage.getItem(key);
+          if (savedValue !== null) {
+            sum += parseInt(savedValue, 10); // Wert in Ganzzahl umwandeln und aufsummiert
+          }
+        });
+
+        const average = sum / keys.length; // Mittelwert berechnen
+        return average;
+      }
+
+      // Funktion zur Formatierung des Mittelwerts
+      function formatAverage(average) {
+        return average.toFixed(2).replace('.', ',');
+      }
+
+      // Mittelwert berechnen und als Text in HTML ausgeben
+      const averageOutput = document.getElementById('averageOutput');
+      const average = calculateAverage();
+      const formattedAverage = formatAverage(average);
+      var meinWert = formattedAverage;
+    </script>
+
+        <h4>Dimension Mitarbeiter:innen<br>Führung</h4>
+        <div class="antwort">
+        <script>
+            console.log(meinWert)
+            if (meinWert <= '2,00') {
+                document.write('<img src="Medien/ampel_rot_trsp.png">');
+            } else if (meinWert >= '4,50') {
+                document.write('<img src="Medien/ampel_gruen_trsp.png">');
+            } else {
+                document.write('<img src="Medien/ampel_gelb_trsp.png">');
+            }
+        </script>
+            <p>Sie haben durchschnittlich <b><span id="wertAnzeige"></span> Punkte</b> in der Dimension <b>Mitarbeiter:innen Führung</b> erreicht.</p>
+            <div id="averageOutput"></div>
+        <script>document.getElementById("wertAnzeige").innerText = meinWert;</script>
+    
+        </div>
+
+           <a href="leitsatz5.html">
+            <button class="zurueck">
+                &lt;
+            </button></a>
+            <a href="leitsatz6.html">
+                <button class="button button2">
+                    weiter
+                </button></a>
+                <a id="ergebnisButton" href="ergebnis.html">
+                   <button class="button button2" style="margin-left: 10px; letter-spacing: 1.5px;">
+                    Übersicht
+                </button>
+            </a>
+
+            <script>
+    var ergButton; // Deklariere die Variable
+
+    // Versuche den Wert von ergButton aus dem Session Storage abzurufen
+    if (sessionStorage.getItem("ergButton")) {
+        ergButton = parseInt(sessionStorage.getItem("ergButton"));
+    } else {
+        // Setze einen Standardwert, falls keine Information im Session Storage vorhanden ist
+        ergButton = 0;
+    }
+
+    // Überprüfe den Wert von ergButton und zeige/verstecke den Button entsprechend
+    if (ergButton !== 1) {
+        var ergebnisButton = document.getElementById("ergebnisButton");
+        ergebnisButton.style.display = "none"; // Verstecke den Button
+    }
+</script>
+        </div>
+        <script>console.log(meinWert)</script>
+    </body>
+    </html>
