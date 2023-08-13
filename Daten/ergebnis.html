@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeKompass - Ergebnis</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    
+
+<script>
+    // JavaScript object to store section-specific data
+    const sectionData = {
+      dimensionSparkasseStrategie: {
+        keys: ['1.1', '1.2', '1.3', '1.4', '1.5', '1.6'],
+        dimensionName: 'Sparkasse Strategie'
+      },
+      dimensionSparkasseKultur: {
+        keys: ['2.1', '2.2', '2.3', '2.4', '2.5', '2.6'],
+        dimensionName: 'Sparkasse Kultur'
+      },
+      dimensionSparkasseStruktur: {
+        keys: ['3.1', '3.2', '3.3', '3.4', '3.5'],
+        dimensionName: 'Sparkasse Struktur'
+      },
+      dimensionMitarbeiterKompetenz: {
+        keys: ['4.1', '4.2', '4.3', '4.4'],
+        dimensionName: 'Mitarbeiter Kompetenz'
+      },
+      dimensionMitarbeiterFuehrung: {
+        keys: ['5.1', '5.2', '5.3', '5.4', '5.5'],
+        dimensionName: 'Mitarbeiter Fuehrung'
+      },
+      dimensionKunden: {
+        keys: ['6.1', '6.2', '6.3'],
+        dimensionName: 'Kunden'
+      }
+      // Add more sections as needed
+    };
+
+    // Function to calculate the average based on section-specific data
+    function calculateAverage(keys) {
+      let sum = 0;
+      keys.forEach((key) => {
+        const savedValue = sessionStorage.getItem(key);
+        if (savedValue !== null) {
+          sum += parseInt(savedValue, 10);
+        }
+      });
+      const average = sum / keys.length;
+      return average;
+    }
+
+    // Function to format the average value
+    function formatAverage(average) {
+      return average.toFixed(2).replace('.', ',');
+    }
+
+    // Function to update the section with the calculated average
+    function updateSection(sectionId) {
+      const section = sectionData[sectionId];
+      const averageOutput = document.getElementById(`${sectionId}-averageOutput`);
+      const average = calculateAverage(section.keys);
+      const formattedAverage = formatAverage(average);
+
+      document.getElementById(`${sectionId}-wertAnzeige`).innerText = formattedAverage;
+
+      if (formattedAverage <= '2,00') {
+        averageOutput.innerHTML = '<img src="Medien/ampel_rot_trsp.png">';
+      } else if (formattedAverage >= '4,50') {
+        averageOutput.innerHTML = '<img src="Medien/ampel_gruen_trsp.png">';
+      } else {
+        averageOutput.innerHTML = '<img src="Medien/ampel_gelb_trsp.png">';
+      }
+    }
+   
+  </script>
+</head>
+<body>
+  <script>
+    // Versuche, den aktuellen Wert der Variable "ergButton" aus dem Session Storage abzurufen
+    let currentValue = sessionStorage.getItem("ergButton");
+
+    // Überprüfe den aktuellen Wert und setze ihn auf "1", falls er nicht bereits "1" ist
+    if (currentValue !== "1") {
+        sessionStorage.setItem("ergButton", "1");
+        
+    }
+</script>
+    <header>
+        <img src="https://www.sparkassen-akademie.de/application/files/5716/7966/9548/Akademie-HT_Marke_rgb_auf_transp.png">
+        <div>
+            <h1>Der Change Kompass</h1>
+            <h2>Ergebnis</h2>
+        </div>
+    </header>
+
+    <div class="bereich">
+        <div class="bereich2">
+            <h2>Übersicht der Ergebnisse</h2>
+        </div>
+
+        <article class="container">
+
+          
+              <section class="itemhov" id="linkSection1" style="cursor: pointer;">
+                  <h4 class="ergebnis">Dimension Sparkasse<br>Strategie</h4>
+                  <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                    <div id="dimensionSparkasseStrategie-averageOutput"></div>  
+                    <p>Sie haben durchschnittlich <b><span id="dimensionSparkasseStrategie-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Strategie</b> erreicht.</p>
+                  </div>
+              </section>
+            
+
+            <section class="itemhov" id="linkSection2" style="cursor: pointer;">
+                <h4 class="ergebnis" >Dimension Sparkasse<br>Kultur</h4>
+                <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                  <div id="dimensionSparkasseKultur-averageOutput"></div>  
+                  <p>Sie haben durchschnittlich <b><span id="dimensionSparkasseKultur-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Kultur</b> erreicht.</p>
+                    
+                </div>
+            </section>
+
+            <section class="itemhov" id="linkSection3" style="cursor: pointer;">
+              <h4 class="ergebnis" >Dimension Sparkasse<br>Struktur</h4>
+              <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                <div id="dimensionSparkasseStruktur-averageOutput"></div>  
+                <p>Sie haben durchschnittlich <b><span id="dimensionSparkasseStruktur-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Kultur</b> erreicht.</p>
+                  
+              </div>
+            </section>
+
+            <section class="itemhov" id="linkSection4" style="cursor: pointer;">
+              <h4 class="ergebnis" >Dimension Mitarbeiter<br>Kompetenz</h4>
+              <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                <div id="dimensionMitarbeiterKompetenz-averageOutput"></div>  
+                <p>Sie haben durchschnittlich <b><span id="dimensionMitarbeiterKompetenz-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Kultur</b> erreicht.</p>
+                  
+              </div>
+            </section>
+
+            <section class="itemhov" id="linkSection5" style="cursor: pointer;">
+              <h4 class="ergebnis" >Dimension Mitarbeiter<br>Führung</h4>
+              <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                <div id="dimensionMitarbeiterFuehrung-averageOutput"></div>  
+                <p>Sie haben durchschnittlich <b><span id="dimensionMitarbeiterFuehrung-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Kultur</b> erreicht.</p>
+                  
+              </div>
+            </section>
+
+            <section class="itemhov" id="linkSection6" style="cursor: pointer;">
+              <h4 class="ergebnis" >Dimension<br>Kunden</h4>
+              <div style="margin-left: -20px; margin-bottom: 20px;" class="antwort">
+                <div id="dimensionKunden-averageOutput"></div>  
+                <p>Sie haben durchschnittlich <b><span id="dimensionKunden-wertAnzeige"></span> Punkte</b> in der Dimension <b>Sparkasse Kultur</b> erreicht.</p>
+                  
+              </div>
+            </section>
+
+            <!-- Add more sections as needed -->
+
+        </article>
+
+        <a href="antwort6.html"><button class="zurueck">&lt;</button></a>
+
+        <button id="exportButton" class="button button2" style="margin-left: 10px; letter-spacing: 0.0px;">exportieren</button>
+
+    <script>
+        document.getElementById('exportButton').addEventListener('click', function() {
+            // Schritt 1: Daten aus dem sessionStorage sammeln
+            const variables = {};
+            for (let i = 0; i < sessionStorage.length; i++) {
+                const key = sessionStorage.key(i);
+                const value = sessionStorage.getItem(key);
+                variables[key] = value;
+            }
+            
+            // Schritt 2: CSV-Format erstellen
+            let csvContent = "Variable, Wert\n";
+            for (const key in variables) {
+                const value = variables[key];
+                const csvLine = `${key}, ${value}\n`;
+                csvContent += csvLine;
+            }
+            
+            // Schritt 3: Export-Datei erstellen und anbieten
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'Change_Kompass.csv'; // Dateiname für den Download
+            a.click();
+            
+            URL.revokeObjectURL(url);
+        });
+    </script>
+
+    </div>
+
+    <script>
+        // Update sections with their respective data
+        updateSection('dimensionSparkasseStrategie');
+        updateSection('dimensionSparkasseKultur');
+        updateSection('dimensionSparkasseStruktur');
+        updateSection('dimensionMitarbeiterKompetenz');
+        updateSection('dimensionMitarbeiterFuehrung');
+        updateSection('dimensionKunden');
+        // Add more sections as needed
+    </script>
+
+    <script>
+      // JavaScript-Ereignis für Abschnitt 1
+      document.getElementById("linkSection1").addEventListener("click", function() {
+        window.location.href = "leitsatz1.html";
+      });
+
+      // JavaScript-Ereignis für Abschnitt 2
+      document.getElementById("linkSection2").addEventListener("click", function() {
+        window.location.href = "leitsatz2.html";
+      });
+
+      // JavaScript-Ereignis für Abschnitt 3
+      document.getElementById("linkSection3").addEventListener("click", function() {
+        window.location.href = "leitsatz3.html";
+      });
+
+      // JavaScript-Ereignis für Abschnitt 4
+      document.getElementById("linkSection4").addEventListener("click", function() {
+        window.location.href = "leitsatz4.html";
+      });
+
+      // JavaScript-Ereignis für Abschnitt 5
+      document.getElementById("linkSection5").addEventListener("click", function() {
+        window.location.href = "leitsatz5.html";
+      });
+
+      // JavaScript-Ereignis für Abschnitt 6
+      document.getElementById("linkSection6").addEventListener("click", function() {
+        window.location.href = "leitsatz6.html";
+      });
+    </script>
+
+    <script>
+      // Versuche, den aktuellen Wert der Variable "ergButton" aus dem Session Storage abzurufen
+      //let currentValue = sessionStorage.getItem("ergButton");
+
+      // Überprüfe den aktuellen Wert und setze ihn auf "1", falls er nicht bereits "1" ist
+      if (currentValue !== "1") {
+          sessionStorage.setItem("ergButton", "1");
+          
+      }
+    </script>
+
+</body>
+</html>
