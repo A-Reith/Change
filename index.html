@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChangeKompass</title>
+    <link rel="stylesheet" type="text/css" href="daten/styles.css">
+      
+    <script>
+        function parseCSVAndStore(csvContent) {
+            var lines = csvContent.trim().split('\n');
+
+            lines.forEach(function(line) {
+                var parts = line.split(',');
+                var key = parts[0].trim();
+                var value = parts[1].trim();
+                sessionStorage.setItem(key, value);
+            });
+
+        // Nach dem Import zur Seite "daten/ergebnis.html" weiterleiten
+            window.location.href = 'daten/ergebnis.html';
+        }
+
+        function handleFileUpload(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+
+            reader.onload = function(e) {
+                var csvContent = e.target.result;
+                parseCSVAndStore(csvContent);
+            };
+
+            reader.readAsText(file);
+        }
+    </script>
+
+</head>
+<body>
+
+    <header>
+    <img src="https://www.sparkassen-akademie.de/application/files/5716/7966/9548/Akademie-HT_Marke_rgb_auf_transp.png">
+
+    </header>
+    <div class="bereich">
+        <h1>Der Change Kompass        
+
+        </h1>
+        
+        <h2><p><img id="rotating-image" style="float: right; margin-top: -25px; margin-right: 25px; width: 200px;" src="daten/Medien/kompass.png"></p>
+            <p style="margin-bottom: 50px;">Standortbestimmung auf Management-Ebene zur Etablierung von professionellem Change Management.</p>
+            
+        </h2>
+        <a href="daten/leitsatz1.html">
+        <button class="button button2">
+            Start
+        </button></a>
+        <button class="button button2" style="margin-left: 10px; letter-spacing: 0.0px;" onclick="document.getElementById('csvFileInput').click()">importieren</button>
+        <input type="file" id="csvFileInput" accept=".csv" style="display: none;" onchange="handleFileUpload(event)">
+    </div>
+   
+
+</body>
+</html>
